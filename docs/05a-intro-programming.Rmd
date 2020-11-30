@@ -1,0 +1,323 @@
+---
+title: "Data Science 1"
+subtitle: "5.1 - Einführung in die Programmierung"
+author: "Saskia Otto"
+date: "WiSe2021/2022"
+output:
+  UHHformats::html_lecture:
+    logo: "images/uhh_logo.png"
+    cover: "images/larson_c.jpg" 
+    logo_small: "images/uhh_logo_notext.png"
+    footer: "[Data Science 1](https://saskiaotto.github.io/bio-bsc-data-science-1/)"
+    widescreen: true
+    smaller: true
+    toc: "Folienübersicht"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+## Global options
+options(max.print="10")
+knitr::opts_chunk$set(cache=FALSE, echo=FALSE, prompt=FALSE,
+  message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{r load_libraries, echo=FALSE, cache=FALSE}
+library(knitr)
+library(tidyverse)
+```
+
+# Programmiersprachen {.segue-icon}
+![](images/ds_comps/ds_comp2.png)
+
+## Was ist erstmal ein Programm? {.build}
+
+Ein Programm ist die **Umsetzung eines Algorithmus** und der zugehörigen **Datenbereiche** in eine **Programmiersprache**. Während Algorithmen relativ allgemein beschrieben werden können, sind Programme wesentlich konkreter.
+
+> Ein Programm ist eine "nach den Regeln der verwendeten Programmiersprache festgelegte syntaktische Einheit aus Anweisungen und Vereinbarungen, welche zur Lösung einer Aufgabe notwendige Elemente umfasst". | nach DIN 44300  {.bg-yellow}
+
+- Eng verknüpfte Begriffe: Daten, Datei, Algorithmus, Variablen, Datentypen, Resultate, Software
+
+## Was sind Programmiersprachen? {.build}
+
+Programmiersprachen sind formale Sprachen, mit denen sich Rechenvorschriften formulieren lassen. Diese Vorschriften können dann von einem Computer ausgeführt werden.
+
+- Die Gesamtheit aller Anweisungen, die in einer bestimmten Programmiersprache geschrieben sind, bezeichnet man als **Quellcode**.
+- Ein Quellcode lässt sich mit Hilfe eines einfachen **Texteditors** erstellen.
+- Bei größeren Projekten setzt man meist eine **Entwicklungsumgebung** (IDE) ein.
+- Die **Syntax** einer Programmiersprache ist deren "Grammatik". Sie beschreibt sowohl die zulässigen Sprachelemente als auch, wie diese Sprachelemente zu verwenden sind.
+
+## Beispiele von Quellcode für Websites
+
+### HTML {.box-4 .bg-yellow .outline .stretch}
+```{r, out.width="100%", fig.align='center'}
+include_graphics("images/r_intro/r_intro_sourcecode_html2.png")
+```
+
+### CSS {.box-4 .bg-yellow .outline .stretch}
+```{r, out.width="100%", fig.align='center'}
+include_graphics("images/r_intro/r_intro_sourcecode_css2.png")
+```
+
+### Javascript {.box-4 .bg-yellow .outline .stretch}
+```{r, out.width="100%", fig.align='center'}
+include_graphics("images/r_intro/r_intro_sourcecode_js2.png")
+```
+
+
+## Beispiele von Quellcode für Websites | Tilt Maze
+
+Codepen Website: [https://codepen.io/HunorMarton/pen/VwKwgxX](https://codepen.io/HunorMarton/pen/VwKwgxX)
+
+<div class="wrapper" >
+  <iframe class="zoom80" src="https://codepen.io/HunorMarton/pen/VwKwgxX"></iframe>
+</div>
+
+
+## Beispiele von Quellcode für Datenanalysen
+
+### R {.box-6 .bg-blue .stretch}
+```{r, out.width="100%"}
+include_graphics("images/r_intro/r_intro_sourcecode_r.png")
+```
+
+### Python {.box-6 .bg-gray .stretch}
+```{r, out.width="100%"}
+include_graphics("images/r_intro/r_intro_sourcecode_python.png")
+```
+
+
+
+## Übersetzung des Quellcodes
+
+- Damit ein Computer die im Quelltext enthaltenen Anweisungen ausführen kann, muss der Code in die **Maschinensprache** (Binärcode) des jeweiligen Computertyps übersetzt werden. 
+- Je nachdem **wann** der Quellcode übersetzt wird, unterscheidet man:
+
+### Compiler {.box-4 .bg-red .small}
+= gute Performance
+
+- Übersetzt den Quellcode **vor seiner Ausführung** in die Maschinensprache.
+- Dies lässt den Code **schnell** laufen, insbesondere wenn der Compiler effektiv optimiert. 
+- Der Kompilierungsprozess kann jedoch Zeit in Anspruch nehmen, und der resultierende Code lässt sich möglicherweise nicht gut auf andere Betriebssysteme übertragen. 
+
+### Interpreter {.box-4 .bg-blue .small}
+= gute Übertragbarkeit
+
+- Übersetzt den Quellcode erst **während der Laufzeit** des Programms. 
+- Der Vorteil hier ist im Allgemeinen eine **bessere Übertragbarkeit** zwischen den Systemen und eine **geringe Kompilierzeit**. 
+- Auf der anderen Seite sind interpretierte Sprachen in der Regel **langsamer** als entsprechende kompilierte Sprachen.
+
+### JIT-Compiler {.box-4 .bg-green .small}
+= Ausgewogenheit zwischen Performance und Übertragbarkeit
+
+- *Just-In-Time* kompilierte Sprachen werden **schnell kompiliert**, allerdings ist die **Optimierung nicht so hoch**.
+
+
+## 3 Klassen von Programmiersprachen
+
+### Imperative Programmierung {.box-4 .bg-gray .small}
+- Das Programm besteht aus einer Folge von Anweisungen, die genau vorgibt, zu welchem Zeitpunkt was vom Rechner getan werden soll. 
+- Zur Steuerung werden Kontrollstrukturen wie Schleifen oder Verzweigungen verwendet.
+- Beispiel: ALGOL, C, Cobol, Pascal, FORTRAN (älteste noch verwendete formale Sprache)
+
+
+### Funktionale Programmierung {.box-4 .bg-orange .small}
+- Das Programm besteht ausschließlich aus Funktionen die - wie in der Mathematik - zu Funktionen höherer Ordnung verknüpft werden können. 
+- Auch das Programm selbst ist eine Funktion.
+- Beispiele: Haskell, LISP, Scheme
+
+### Objektorientierte Programmierung {.box-4 .bg-green .small}
+- Das Programm stellt ein System von kooperierenden Objekten dar.
+- Ein Objekt gehört einer übergeordneten Kategorie (Klasse) an, besitzt bestimmte Eigenschaften (Attribute) und Methoden. Es muss auch in der Lage sein, Informationen an andere Objekte zu senden und von diesen zu empfangen.
+- Beispiel: C++, Java, JavaScript, Python, R
+
+
+# Die Grundelemente {.segue-icon}
+![](images/ds_comps/ds_comp2.png)
+
+## Variablen
+Eine Variable ist eine Möglichkeit, um im Programm eine Zahl, ein Zeichen oder Zeichenkette oder einen boolschen Wert (wahr oder falsch) zu speichern. 
+
+**Beispiel**    
+
+### R {.box-6 .bg-blue .stretch}
+```
+x <- 10
+```
+
+### JavaScript {.box-6 .bg-yellow .stretch}
+```
+var x = 10;
+```
+
+## Bedingungen
+Eine Bedingung ist eine Abfrage; trifft diese zu, so wird das, was innerhalb der Bedingung ist, ausgeführt. Um eine Bedingung zu erstellen gibt es Operatoren (gleich, ungleich, größer als, kleiner als, wahr, falsch).
+
+**Beispiel**    
+
+### R {.box-6 .bg-blue .stretch}
+```
+if (Bedingung) {
+  ausführen;
+}
+```
+
+```
+if (x < 20) {
+  print("Stimmt, x ist kleiner als 20!")
+}
+```
+
+### JavaScript {.box-6 .bg-yellow .stretch}
+```
+if (Bedingung) {
+  ausführen;
+};
+```
+
+```
+if (x < 20) {
+  alert("Stimmt, x ist kleiner als 20!");
+};
+```
+
+## Schleifen
+Eine Schleife enthält Code der solange ausgeführt wird, wie die Bedingung, die zur Schleife gehört, wahr ist. Der Code kann also z.B. zehn Mal ausgeführt werden, das hat den Vorteil, dass der Code nicht zehn Mal geschrieben werden muss.
+
+**Beispiel**    
+
+### R {.box-6 .bg-blue .stretch}
+```
+for (i in 1:10) {
+  print(i);
+};
+```
+
+### JavaScript {.box-6 .bg-yellow .stretch}
+```
+for (i=0; i < 10; i++) {
+alert(i);
+};
+```
+
+## Funktionen
+Eine Funktion ist eine Sammlung von Code, die jederzeit über den jeweiligen Funktionsnamen aufgerufen werden kann. Sie können auch Parameter enthalten. Dies sind Werte, wie z.B. eine Zahl oder ein String. Diese Zahl kann von der Funktion wie eine Variable verwendet werden.
+
+**Beispiel**    
+
+### R {.box-6 .bg-blue .stretch}
+```
+sag_hallo <- function(name) {
+  print(paste("Hallo", name))
+}
+sag_hallo("Jan")
+sag_hallo("Lena")
+```
+
+### JavaScript {.box-6 .bg-yellow .stretch}
+```
+function sagHallo(name) {
+  alert("Hallo " + name);
+};
+sagHallo("Jan");
+sagHallo("Lena");
+```
+
+
+# Algorithmen {.segue-icon}
+![](images/ds_comps/ds_comp2.png)
+
+## Was ist ein Algorithmus? {.build}
+
+Ganz einfach ...
+
+> ...ein Algorithmus ist eine Reihe von Anweisungen, die Schritt für Schritt ausgeführt werden, um eine Aufgabe oder ein Problem zu lösen {.bg-red}
+
+
+## Algorithmen im Alltag
+
+### Rezepte {.box-6 .bg-gray .outline}
+```{r, out.width="80%", fig.align='center'}
+include_graphics("images/r_intro/r_intro_algorithm_mojito.jpg")
+```
+
+<div class="source-img">
+  Bildquelle: <a href="https://de.freepik.com/vektoren/sommer">Sommer Vektor erstellt von freepik</a>
+</div>
+
+
+### Bauanleitungen {.box-6 .bg-gray .outline .stretch}
+```{r, out.width="100%"}
+include_graphics("images/r_intro/r_intro_algorithm_ikea.png")
+```
+
+
+## Algorithmen lernen mit Swift Playgrounds
+
+```{r, out.width="90%", fig.align='center'}
+include_graphics("images/r_intro/r_intro_algorithm_swift.png")
+```
+<div class="source-img" style="position:absolute; bottom:50px; left:600px;">
+  Weblink: <a href="https://www.apple.com/de/swift/playgrounds/">https://www.apple.com/de/swift/playgrounds/</a>
+</div>
+
+
+
+# Programmiersprache in Data Science {.segue-icon}
+![](images/ds_comps/ds_comp2.png)
+
+## Welche Programmiersprache werden in Data Science genutzt? | Viele
+
+```{r, out.width="500px", fig.align='center', fig.cap=""}
+include_graphics("images/r_intro/r_intro_lang_wordcloud.png")
+```
+
+
+## Welche Programmiersprache werden in Data Science genutzt? | Ranking
+
+<br>
+
+```{r, fig.align='center', fig.cap="Säulendiagramm der häufigsten Programme und Sprachen bei akademischen 'data scientists' (links) and Statistikern (rechts)."}
+include_graphics("images/r_intro/r_intro_lang_barchart.png")
+```
+
+<div class="source-img" style="position:absolute; bottom:100px; left:500px;">
+  Datenquelle: <a href="https://www.kaggle.com/amberthomas/kaggle-2017-survey-results">Kaggle Survey, 2017</a>
+</div>
+
+
+## Einstieg in die Welt von ..
+<br><br>
+```{r, out.width="50%", fig.align='center'}
+include_graphics("images/logos/logo_r.png")
+```
+
+
+# Fragen? {end-slide=TRUE}
+
+<div id="logo"><img src="images/uhh_logo.png"/></div>
+
+<div id="contact" class="auto-fadein">
+  Bei weiteren Fragen: saskia.otto(at)uni-hamburg.de
+</div>
+      
+<div id="license" class="auto-fadein">
+  <p>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+      <img alt="Creative Commons License" style="border-width:0"
+        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br>
+        This work is licensed under a <a rel="license" 
+          href="http://creativecommons.org/licenses/by-sa/4.0/">
+        Creative Commons Attribution-ShareAlike 4.0 International License </a>
+     except for the borrowed and mentioned with proper <i>source:</i> statements.<br>
+  </p>
+  <p id=source-cover>
+      <em>Image on title and end slide:</em> Section of an infrared satellite image showing the Larsen C 
+      ice shelf on the Antarctic Peninsula - USGS/NASA Landsat: 
+      <a href="https://landsat.visibleearth.nasa.gov/view.php?id=90481">A Crack of Light in the Polar Dark</a>, 
+      Landsat 8 - TIRS, June 17, 2017 (under CC0 license)
+  </p>
+</div>
+
+
