@@ -1,0 +1,117 @@
+---
+title: "Data Science 1"
+subtitle: "8.1 - Data wrangling: Import/Export"
+author: "Saskia Otto"
+date: "WiSe2021/2022"
+output:
+  UHHformats::html_lecture:
+    logo: "images/uhh_logo.png"
+    cover: "images/larson_c.jpg" 
+    logo_small: "images/uhh_logo_notext.png"
+    footer: "[Data Science 1](https://datasciencebiology.blogs.uni-hamburg.de/course-portfolio/data-science-1/)"
+    widescreen: true
+    smaller: true
+    toc: "Folienübersicht"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+## Global options
+options(max.print="10")
+knitr::opts_chunk$set(cache=FALSE, echo=FALSE, prompt=FALSE,
+  message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{r load_libraries, echo=FALSE, cache=FALSE}
+library(knitr)
+library(tidyverse)
+```
+# Vewendung von Skripten
+
+## Style guide - Allgemeine Empfehlungen 
+
+- Folge **einem** style guide und wechsel nicht.
+- Jedes Skript sollte **so kurz wie möglich** und **so komplex wie nötig** sein.
+- Verwende **"#"** um code auszukommentieren; mehrere Zeilen lassen sich mit cmd+shift+c auf einmal auskommentieren
+- Anfangs wirst Du noch kommentieren was Du machst, später sollte es aber nur um das **warum** gehen.
+- Benutze als Zuweisungsoperator `<-` (NICHT `=`)
+
+---
+## Style guide - Objektnamen
+
+- Variablenamen sollten **Hauptwörter**  und Funktionsnamen **Verben** sein.
+- Objektnamen **dürfen nicht** mit einer **Zahl** beginnen.
+- Verwende keine Sonderzeichen (z.B. !,/,%).
+- Versuche keine Objektnahmen zu verwenden, die es bereits als Funktionsnamen gibt.
+- Verwende **Kleinbuchstaben**.
+- Verwende den **Unterstrich** und **keine** Leerzeichen in Namen.
+- Folgendes ist in Ordnung:
+  - a, x, my_list, my_dat, dat1
+- **Nicht** empfohlen:
+  - 1_a, c, list, _mydat, $dat
+
+---
+## Style guide - Leerzeichen
+
+Füge zur Übersicht ein Leerzeichen ein
+
+- **vor** und **nach** allen Operatoren (=, +, -, <-, etc.)
+- beim Auflisten von Argumenten in Funktionen
+- nach jedem Komma, aber nicht davor
+
+## DIe Struktur eines Skriptes 
+
+hier hatten wir eine Vorlage für die STudis gemacht!
+
+
+
+
+
+# Import und Export
+
+
+
+
+
+
+
+
+
+
+## Übersicht aller Operatoren
+
+```{r, out.width = "800px", echo = FALSE, fig.align = 'center'}
+knitr::include_graphics("img/R_operators.jpg")
+```
+
+
+
+
+# Fragen? {end-slide=TRUE}
+
+<div id="logo"><img src="images/uhh_logo.png"/></div>
+
+<div id="contact" class="auto-fadein">
+  Bei weiteren Fragen: saskia.otto(at)uni-hamburg.de
+</div>
+      
+<div id="license" class="auto-fadein">
+  <p>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+      <img alt="Creative Commons License" style="border-width:0"
+        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br>
+        This work is licensed under a <a rel="license" 
+          href="http://creativecommons.org/licenses/by-sa/4.0/">
+        Creative Commons Attribution-ShareAlike 4.0 International License </a>
+     except for the borrowed and mentioned with proper <i>source:</i> statements.<br>
+  </p>
+  <p id=source-cover>
+      <em>Image on title and end slide:</em> Section of an infrared satellite image showing the Larsen C 
+      ice shelf on the Antarctic Peninsula - USGS/NASA Landsat: 
+      <a href="https://landsat.visibleearth.nasa.gov/view.php?id=90481">A Crack of Light in the Polar Dark</a>, 
+      Landsat 8 - TIRS, June 17, 2017 (under CC0 license)
+  </p>
+</div>
+
+
