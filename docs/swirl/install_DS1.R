@@ -1,9 +1,14 @@
 install_dsb_course <- function(){
 
-    install_course_url("https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/UHH-DSB-Data_Science_1.swc.zip")
-    path <- file.path(swirl_courses_dir(), "UHH-DSB-Data_Science_1.swc")
-    install_course(swc_path = path)
+    swirl::install_course_url("https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/UHH-DSB-Data_Science_1.swc.zip")
+    scd <- getOption("swirl_courses_dir")
+    if (is.null(scd)) {
+        scd <- file.path(find.package("swirl"), "Courses")
+    }
+    path <- file.path(scd, "UHH-DSB-Data_Science_1.swc")
+    swirl::install_course(swc_path = path)
     unlink(path)
+
 }
 
 install_dsb_course()
