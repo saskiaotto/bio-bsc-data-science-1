@@ -6,7 +6,7 @@ install_dsb_course <- function(){
              error = function(c) {file.path(find.package("swirl"),"Courses")}
     )
   }
-  path <- file.path(get_course_path(), "daten-vis-ggplot2.swc.swc")
+  path <- file.path(get_course_path(), "daten-vis-ggplot2.swc")
   swirl::install_course(swc_path = path)
   unlink(path)
 
