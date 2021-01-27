@@ -1,12 +1,12 @@
 install_dsb_course <- function(){
 
-  swirl::install_course_url("https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/daten-vis-ggplot2.swc.zip")
+  swirl::install_course_url("https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/Daten_visualisieren_mit_ggplot2.swc.zip")
   get_course_path <- function(){
     tryCatch(swirl:::swirl_courses_dir(),
              error = function(c) {file.path(find.package("swirl"),"Courses")}
     )
   }
-  path <- file.path(get_course_path(), "daten-vis-ggplot2.swc")
+  path <- file.path(get_course_path(), "Daten_visualisieren_mit_ggplot2.swc")
   swirl::install_course(swc_path = path)
   unlink(path)
 
