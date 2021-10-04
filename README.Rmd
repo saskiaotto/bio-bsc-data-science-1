@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Module description <img src="images/dsb_logo.png" align="right" width="150" style="margin-left: 20px"/>
+## MODULE description <img src="images/dsb_logo.png" align="right" width="150" style="margin-left: 20px"/>
 
 This is the first out of four modules in the data science program newly introduced into the Bachelor Programs of the **Biology Department, University of Hamburg**, which I'm coordinating. *Data Science 1* gives an overview of the topic and program and introduces students into the open-source spreadsheet program *Calc* and particularly into the world of programming and visualizing in R.
 
