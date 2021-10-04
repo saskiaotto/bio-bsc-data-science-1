@@ -1,7 +1,7 @@
 Data Science 1 - Programming & Visualization
 ================
 
-## MODULE description <img src="images/dsb_logo.png" align="right" width="150" style="margin-left: 20px"/>
+## Module description <img src="images/dsb_logo.png" align="right" width="150" style="margin-left: 20px"/>
 
 This is the first out of four modules in the data science program newly
 introduced into the Bachelor Programs of the **Biology Department,
