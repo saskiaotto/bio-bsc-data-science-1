@@ -15,7 +15,7 @@ install_dsb_courses <- function(courses) {
     response <- httr::GET(url, httr::progress())
     path_zip <- file.path(get_course_path(), "temp.zip")
     writeBin(httr::content(response, "raw"), path_zip)
-    swirl::install_course_zip(path_zip, multi = multi)
+    swirl::install_course_zip(path_zip, multi = FALSE)
     unlink(path_zip, force = TRUE)
     path_swc <- file.path(get_course_path(), courses_swc[i])
     swirl::install_course(swc_path = path_swc)
