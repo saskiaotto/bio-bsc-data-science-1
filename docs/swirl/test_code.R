@@ -1,1 +1,4 @@
-2+2
+print(2+2)
+
+
+print("This code works")
