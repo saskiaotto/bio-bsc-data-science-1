@@ -1,6 +1,16 @@
 # created by Saskia Otto
 # latest update 12/11/2021
 
+packages <- c("httr", "tidyverse", "lubridate")
+package_loader <- function(x){
+    for (i in 1:length(x)){
+        if (!identical(x[i], installed.packages()[x[i],1])){
+            install.packages(x[i], dep = TRUE)
+        }
+    }
+}
+suppressWarnings(package_loader(packages))
+
 # Function to install individual DSB - DS1 courses
 install_dsb_courses <- function(courses) {
   courses_zip <- paste0(courses, ".swc.zip")
