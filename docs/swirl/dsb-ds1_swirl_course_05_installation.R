@@ -36,3 +36,4 @@ install_dsb_courses <- function(courses) {
 # Install preliminary ggplot course
 install_dsb_courses(courses = c("DS1-05-Datenvisualisierung_mit_ggplot2"))
 
+# source(file = "https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/dsb-ds1_swirl_course_05_installation.R")
