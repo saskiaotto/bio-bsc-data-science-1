@@ -1,7 +1,7 @@
 # created by Saskia Otto
 # latest update 12/11/2021
 
-packages <- c("httr", "tidyverse", "lubridate")
+packages <- c("httr")
 package_loader <- function(x){
     for (i in 1:length(x)){
         if (!identical(x[i], installed.packages()[x[i],1])){
