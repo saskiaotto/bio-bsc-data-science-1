@@ -36,4 +36,4 @@ install_dsb_courses <- function(courses) {
 # Install preliminary ggplot course
 install_dsb_courses(courses = c("DS1-03-Datenaufbereitung_oder_per_Anleitung_durchs_Tidyversum"))
 
-# source(file = "https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/dsb-ds1_swirl_course_05_installation.R")
+# source(file = "https://saskiaotto.github.io/bio-bsc-data-science-1/swirl/dsb-ds1_swirl_course_03_installation.R")
