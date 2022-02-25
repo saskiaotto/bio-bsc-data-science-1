@@ -1,7 +1,7 @@
 # created by Saskia Otto
 # latest update 12/11/2021
 
-packages <- c("httr", "tidyverse", "lubridate")
+packages <- c("httr")
 package_loader <- function(x){
     for (i in 1:length(x)){
         if (!identical(x[i], installed.packages()[x[i],1])){
@@ -33,6 +33,12 @@ install_dsb_courses <- function(courses) {
   }
 }
 
-# So far, only first 2 are finalised and will be installed now:
-install_dsb_courses(courses = c("DS1-01-R_Grundlagen", "DS1-02-Deskriptive_Statistik_mit_R"))
+# Install all 5 courses
+install_dsb_courses(courses = c(
+  "DS1-01-R_Grundlagen",
+  "DS1-02-Deskriptive_Statistik_mit_R",
+  "DS1-03-Datenaufbereitung_oder_per_Anleitung_durchs_Tidyversum",
+  "DS1-04-Datenvisualisierung_mit_ggplot2",
+  "DS1-05-Handling_spezieller_Datentypen")
+)
 
