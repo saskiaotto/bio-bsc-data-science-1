@@ -17,6 +17,9 @@ slides (all in German) produced with Quarto for the winter semester
 2022/2023. The actual course website can be (soon) found here:
 [https://datasciencebiology.blogs.uni-hamburg.de](https://datasciencebiology.blogs.uni-hamburg.de/course-portfolio/data-science-1/)
 
+Until then, lectures can be looked at here:
+<https://saskiaotto.github.io/bio-bsc-data-science-1/>
+
 ## License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
