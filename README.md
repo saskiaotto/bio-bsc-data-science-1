@@ -13,8 +13,8 @@ of programming and visualizing in R.
 ## This repository
 
 This Github repository holds just the course-specific HTML lecture
-slides (all in German) produced with R Markdown. The actual course
-website can be found here:
+slides (all in German) produced with Quarto for the winter semester
+2022/2023. The actual course website can be (soon) found here:
 [https://datasciencebiology.blogs.uni-hamburg.de](https://datasciencebiology.blogs.uni-hamburg.de/course-portfolio/data-science-1/)
 
 ## License
@@ -24,7 +24,7 @@ website can be found here:
         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
 </a>
 
-This work is licensed under a [Creative Commons
-Attribution-ShareAlike 4.0 International
+This work is licensed under a [Creative Commons Attribution-ShareAlike
+4.0 International
 License](http://creativecommons.org/licenses/by-sa/4.0/) except for the
 borrowed and mentioned with proper *source:* statements.

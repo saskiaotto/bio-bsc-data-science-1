@@ -14,7 +14,7 @@ This is the first out of four modules in the data science program newly introduc
 
 ## This repository
 
-This Github repository holds just the course-specific HTML lecture slides (all in German) produced with R Markdown. The actual course website can be found here: [https://datasciencebiology.blogs.uni-hamburg.de](https://datasciencebiology.blogs.uni-hamburg.de/course-portfolio/data-science-1/)
+This Github repository holds just the course-specific HTML lecture slides (all in German) produced with Quarto for the winter semester 2022/2023. The actual course website can be (soon) found here: [https://datasciencebiology.blogs.uni-hamburg.de](https://datasciencebiology.blogs.uni-hamburg.de/course-portfolio/data-science-1/)
 
 
 ## License
