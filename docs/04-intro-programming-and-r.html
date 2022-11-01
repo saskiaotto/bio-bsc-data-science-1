@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="04-intro-programming-and-r_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04-intro-programming-and-r_files/libs/quarto-html/tabby.min.js"></script>
+<script src="04-intro-programming-and-r_files/libs/quarto-html/popper.min.js"></script>
+<script src="04-intro-programming-and-r_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="04-intro-programming-and-r_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04-intro-programming-and-r_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="04-intro-programming-and-r_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="04-intro-programming-and-r_files/libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="04-intro-programming-and-r_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.253">
+
+  <meta name="author" content="Saskia Otto">
+  <title> Einführung in die (R) Programmierung</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="04-intro-programming-and-r_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="04-intro-programming-and-r_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="04-intro-programming-and-r_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="src/styles_lecture.css">
+  <link href="04-intro-programming-and-r_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="04-intro-programming-and-r_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="04-intro-programming-and-r_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="04-intro-programming-and-r_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="04-intro-programming-and-r_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="04-intro-programming-and-r_files/libs/rquiz-0.1.0/rquiz.css" rel="stylesheet">
+  <script src="04-intro-programming-and-r_files/libs/multiQuestions-binding-0.1.0.9000/multiQuestions.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="images/cover_lectures.png" data-background-opacity="0.3" data-background-size="cover" class="quarto-title-block center">
+  <h1 class="title"><img src="images/uhh_logo_black.png" style="width:200px;height:auto"><br>Einführung in die (R) Programmierung</h1>
+  <p class="subtitle">Data Science 1 - Programmieren &amp; Visualisieren</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Saskia Otto 
+</div>
+        <p class="quarto-title-affiliation">
+            Universität Hamburg, IMF
+          </p>
+    </div>
+</div>
+
+  <p class="date">Invalid Date</p>
+</section>
+<section>
+<section id="programmiersprachen" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Programmiersprachen</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+<div class="cell">
+
+</div>
+</section>
+<section id="was-ist-erstmal-ein-programm" class="slide level2 smaller">
+<h2>Was ist erstmal ein Programm?</h2>
+<div class="columns">
+<div class="column col-12 fragment">
+<p>Ein Programm ist die <strong>Umsetzung eines Algorithmus</strong> und der zugehörigen <strong>Datenbereiche</strong> in eine <strong>Programmiersprache</strong>. Während Algorithmen relativ allgemein beschrieben werden können, sind Programme wesentlich konkreter.</p>
+</div><div class="column col-12 fragment">
+<blockquote>
+<p>Ein Programm ist eine “nach den Regeln der verwendeten Programmiersprache festgelegte syntaktische Einheit aus Anweisungen und Vereinbarungen, welche zur Lösung einer Aufgabe notwendige Elemente umfasst”. | nach DIN 44300</p>
+</blockquote>
+</div><div class="column col-12 fragment">
+<p>Eng verknüpfte Begriffe: Daten, Datei, Algorithmus, Variablen, Datentypen, Resultate, Software</p>
+</div>
+</div>
+</section>
+<section id="was-sind-programmiersprachen" class="slide level2 smaller">
+<h2>Was sind Programmiersprachen?</h2>
+<div class="columns">
+<div class="column col-12 fragment">
+<p>Programmiersprachen sind formale Sprachen, mit denen sich Rechenvorschriften formulieren lassen. Diese Vorschriften können dann von einem Computer ausgeführt werden.</p>
+</div><div class="column col-12 fragment">
+<ul>
+<li>Die Gesamtheit aller Anweisungen, die in einer bestimmten Programmiersprache geschrieben sind, bezeichnet man als <strong>Quellcode</strong>.</li>
+<li>Ein Quellcode lässt sich mit Hilfe eines einfachen <strong>Texteditors</strong> erstellen.</li>
+<li>Bei größeren Projekten setzt man meist eine <strong>Entwicklungsumgebung</strong> (IDE) ein.</li>
+<li>Die <strong>Syntax</strong> einer Programmiersprache ist deren “Grammatik”. Sie beschreibt sowohl die zulässigen Sprachelemente als auch, wie diese Sprachelemente zu verwenden sind.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="beispiele-von-quellcode-für-websites-1" class="slide level2">
+<h2>Beispiele von Quellcode für Websites | 1</h2>
+<div class="columns">
+<div class="column box-6 box-yellow outline xx-small">
+<h3 id="html">HTML</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="sc">&lt;!</span>DOCTYPE html<span class="sc">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="er">&lt;</span>html<span class="sc">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="er">&lt;</span>head<span class="sc">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="er">&lt;</span>title<span class="sc">&gt;</span>Page Title<span class="sc">&lt;</span><span class="er">/</span>title<span class="sc">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="er">&lt;</span>link rel<span class="ot">=</span><span class="st">"stylesheet"</span> href<span class="ot">=</span><span class="st">"stylesheet.css"</span><span class="sc">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="er">&lt;/</span>head<span class="sc">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="er">&lt;</span>body<span class="sc">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="er">&lt;</span>h1<span class="sc">&gt;</span> This is a Heading<span class="sc">&lt;</span><span class="er">/</span>h1<span class="sc">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="er">&lt;</span>p<span class="sc">&gt;</span>This is a paragraph.<span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="er">&lt;</span>button id<span class="ot">=</span><span class="st">"btn"</span><span class="sc">&gt;</span>Button<span class="sc">&lt;</span><span class="er">/</span>button<span class="sc">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    </span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="er">&lt;</span><span class="sc">!--</span> This is a comment <span class="cf">in</span> html <span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="er">&lt;</span>script src<span class="ot">=</span><span class="st">"./dynamics.js"</span><span class="sc">&gt;</span><span class="er">&lt;/</span>script<span class="sc">&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="er">&lt;/</span>body<span class="sc">&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="er">&lt;/</span>html<span class="sc">&gt;</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column box-6 box-yellow outline xx-small">
+<h3 id="css">CSS</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource css number-lines code-with-copy"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">/* This is a comment in css */</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>body {</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="kw">background-color</span>: <span class="cn">lightblue</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>h1 {</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11"></a>p {</span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">font-family</span>: verdana<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="kw">font-size</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>}</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column box-12 box-yellow outline xx-small">
+<h3 id="javascript">JavaScript</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">// This is a comment in js</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">const</span> btn <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'btn'</span>)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>btn<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> <span class="kw">function</span> <span class="fu">onClick</span>(<span class="bu">event</span>) {</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="co">// Change background color</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">'darkgreen'</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>})<span class="op">;</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<video id="video_shortcode_videojs_video1" width="800px" height="auto" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="videos/html-demo.mp4"></video>
+</section>
+<section id="zusammen-sieht-das-dann-so-aus" class="slide level2">
+<h2>Zusammen sieht das dann so aus…</h2>
+<video id="video_shortcode_videojs_video2" width="900px" height="auto" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="videos/html-demo.mp4"></video>
+</section>
+<section id="beispiele-von-quellcode-für-websites-2" class="slide level2">
+<h2>Beispiele von Quellcode für Websites | 2</h2>
+<p>Codepen Website - Tilt Maze: <a href="https://codepen.io/HunorMarton/pen/VwKwgxX">https://codepen.io/HunorMarton/pen/VwKwgxX</a></p>
+
+<img data-src="images/r_intro/r_intro_sourcecode_codepen.png" class="r-stretch quarto-figure-center"></section>
+<section id="beispiele-von-quellcode-für-datenanalysen" class="slide level2">
+<h2>Beispiele von Quellcode für Datenanalysen</h2>
+<div class="columns">
+<div class="column box-6 box-blue">
+<h3 id="r">R</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_sourcecode_r.png"></p>
+</figure>
+</div>
+</div><div class="column box-6 box-grey1">
+<h3 id="python">Python</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_sourcecode_python.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="übersetzung-des-quellcodes" class="slide level2 smaller">
+<h2>Übersetzung des Quellcodes</h2>
+<div class="columns">
+<div class="column col-12">
+<ul>
+<li>Damit ein Computer die im Quelltext enthaltenen Anweisungen ausführen kann, muss der Code in die <strong>Maschinensprache</strong> (Binärcode) des jeweiligen Computertyps übersetzt werden.</li>
+<li>Je nachdem <strong>wann</strong> der Quellcode übersetzt wird, unterscheidet man:</li>
+</ul>
+</div><div class="column box-4 box-red x-small fragment">
+<!-- -->
+<h3 id="compiler">Compiler</h3>
+<p>= gute Performance</p>
+<ul>
+<li>Übersetzt den Quellcode <strong>vor seiner Ausführung</strong> in die Maschinensprache.</li>
+<li>Dies lässt den Code <strong>schnell</strong> laufen, insbesondere wenn der Compiler effektiv optimiert.</li>
+<li>Der Kompilierungsprozess kann jedoch Zeit in Anspruch nehmen, und der resultierende Code lässt sich möglicherweise nicht gut auf andere Betriebssysteme übertragen.</li>
+</ul>
+</div><div class="column box-4 box-blue x-small fragment">
+<!-- -->
+<h3 id="interpreter">Interpreter</h3>
+<p>= gute Übertragbarkeit</p>
+<ul>
+<li>Übersetzt den Quellcode erst <strong>während der Laufzeit</strong> des Programms.</li>
+<li>Der Vorteil hier ist im Allgemeinen eine <strong>bessere Übertragbarkeit</strong> zwischen den Systemen und eine <strong>geringe Kompilierzeit</strong>.</li>
+<li>Auf der anderen Seite sind interpretierte Sprachen in der Regel <strong>langsamer</strong> als entsprechende kompilierte Sprachen.</li>
+</ul>
+</div><div class="column box-4 box-green x-small fragment">
+<!-- -->
+<h3 id="jit-compiler">JIT-Compiler</h3>
+<p>= Ausgewogenheit zwischen Performance und Übertragbarkeit</p>
+<ul>
+<li><em>Just-In-Time</em> kompilierte Sprachen werden <strong>schnell kompiliert</strong>, allerdings ist die <strong>Optimierung nicht so hoch</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="klassen-von-programmiersprachen" class="slide level2 smaller">
+<h2>3 Klassen von Programmiersprachen</h2>
+<div class="columns">
+<div class="column box-4 box-grey1 small fragment">
+<!-- -->
+<h3 id="imperative-programmierung">Imperative Programmierung</h3>
+<ul>
+<li>Das Programm besteht aus einer Folge von Anweisungen, die genau vorgibt, zu welchem Zeitpunkt was vom Rechner getan werden soll.</li>
+<li>Zur Steuerung werden Kontrollstrukturen wie Schleifen oder Verzweigungen verwendet.</li>
+<li>Beispiel: ALGOL, C, Cobol, Pascal, FORTRAN (älteste noch verwendete formale Sprache)</li>
+</ul>
+</div><div class="column box-4 box-orange small fragment">
+<!-- -->
+<h3 id="funktionale-programmierung">Funktionale Programmierung</h3>
+<ul>
+<li>Das Programm besteht ausschließlich aus Funktionen die - wie in der Mathematik - zu Funktionen höherer Ordnung verknüpft werden können.</li>
+<li>Auch das Programm selbst ist eine Funktion.</li>
+<li>Beispiele: Haskell, LISP, Scheme</li>
+</ul>
+</div><div class="column box-4 box-green small fragment">
+<!-- -->
+<h3 id="objektorientierte-programmierung">Objektorientierte Programmierung</h3>
+<ul>
+<li>Das Programm stellt ein System von kooperierenden Objekten dar.</li>
+<li>Ein Objekt gehört einer übergeordneten Kategorie (Klasse) an, besitzt bestimmte Eigenschaften (Attribute) und Methoden. Es muss auch in der Lage sein, Informationen an andere Objekte zu senden und von diesen zu empfangen.</li>
+<li>Beispiel: C++, Java, JavaScript, Python, <strong>R</strong></li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="die-grundelemente" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Die Grundelemente</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="variablen" class="slide level2 smaller">
+<h2>Variablen</h2>
+<ul>
+<li>Eine Variable ist eine Möglichkeit, um im Programm eine Zahl, ein Zeichen oder Zeichenkette oder einen boolschen Wert (wahr oder falsch) zu speichern.</li>
+</ul>
+<h3 id="beispiel">Beispiel</h3>
+<div class="columns">
+<div class="column box-6 box-blue x-large">
+<h3 id="r-1">R</h3>
+<pre><code>x &lt;- 10</code></pre>
+</div><div class="column box-6 box-yellow x-large">
+<h3 id="javascript-1">JavaScript</h3>
+<pre><code>var x = 10;</code></pre>
+</div>
+</div>
+</section>
+<section id="bedingungen" class="slide level2 smaller">
+<h2>Bedingungen</h2>
+<ul>
+<li>Eine Bedingung ist eine Abfrage; trifft diese zu, so wird das, was innerhalb der Bedingung ist, ausgeführt.</li>
+<li>Um eine Bedingung zu erstellen gibt es Operatoren (gleich, ungleich, größer als, kleiner als, wahr, falsch).</li>
+</ul>
+<p><strong>Beispiel</strong></p>
+<div class="columns">
+<div class="column box-6 box-blue large">
+<h3 id="r-2">R</h3>
+<pre><code>if (Bedingung) {
+  ausführen
+}</code></pre>
+<pre><code>if (x &lt; 20) {
+  print("Stimmt, x ist kleiner als 20!")
+}</code></pre>
+</div><div class="column box-6 box-yellow large">
+<h3 id="javascript-2">JavaScript</h3>
+<pre><code>if (Bedingung) {
+  ausführen;
+}</code></pre>
+<pre><code>if (x &lt; 20) {
+  alert("Stimmt, x ist kleiner als 20!");
+}</code></pre>
+</div>
+</div>
+</section>
+<section id="schleifen" class="slide level2 smaller">
+<h2>Schleifen</h2>
+<ul>
+<li>Eine Schleife enthält Code der solange ausgeführt wird, wie die Bedingung, die zur Schleife gehört, wahr ist.</li>
+<li>Der Code kann also z.B. zehn Mal ausgeführt werden, das hat den Vorteil, dass der Code nicht zehn Mal geschrieben werden muss.</li>
+</ul>
+<p><strong>Beispiel</strong></p>
+<div class="columns">
+<div class="column box-6 box-blue x-large">
+<h3 id="r-3">R</h3>
+<pre><code>for (i in 1:10) {
+  print(i)
+}</code></pre>
+</div><div class="column box-6 box-yellow x-large">
+<h3 id="javascript-3">JavaScript</h3>
+<pre><code>for (i=0; i &lt; 10; i++) {
+  alert(i);
+}</code></pre>
+</div>
+</div>
+</section>
+<section id="funktionen" class="slide level2 smaller">
+<h2>Funktionen</h2>
+<ul>
+<li>Eine Funktion ist eine Sammlung von Code, die jederzeit über den jeweiligen Funktionsnamen aufgerufen werden kann.</li>
+<li>Sie können auch Parameter enthalten.</li>
+<li>Dies sind Werte, wie z.B. eine Zahl oder ein String. Diese Zahl kann von der Funktion wie eine Variable verwendet werden.</li>
+</ul>
+<p><strong>Beispiel</strong></p>
+<div class="columns">
+<div class="column box-6 box-blue large">
+<h3 id="r-4">R</h3>
+<pre><code>sag_hallo &lt;- function(name) {
+  print(paste("Hallo", name))
+}
+sag_hallo("Jan")
+sag_hallo("Lena")</code></pre>
+</div><div class="column box-6 box-yellow large">
+<h3 id="javascript-4">JavaScript</h3>
+<pre><code>function sagHallo(name) {
+  alert("Hallo " + name);
+}
+sagHallo("Jan");
+sagHallo("Lena");</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="algorithmen" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Algorithmen</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="was-ist-ein-algorithmus" class="slide level2">
+<h2>Was ist ein Algorithmus?</h2>
+<div class="columns">
+<div class="column col-12 large fragment">
+<p>Ganz einfach …</p>
+</div><div class="column col-12 large fragment">
+<blockquote>
+<p>…ein Algorithmus ist eine Reihe von Anweisungen, die Schritt für Schritt ausgeführt werden, um eine Aufgabe oder ein Problem zu lösen</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="algorithmen-im-alltag" class="slide level2">
+<h2>Algorithmen im Alltag</h2>
+<div class="columns">
+<div class="column box-6 box-grey1 outline fragment">
+<!-- -->
+<h3 id="rezepte">Rezepte</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_algorithm_mojito.jpg"></p>
+</figure>
+</div>
+</div><div class="column box-6 box-grey1 outline fragment">
+<!-- -->
+<h3 id="bauanleitungen">Bauanleitungen</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_algorithm_ikea.png"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="source-left">
+<p>Bildquelle links: <a href="https://de.freepik.com/vektoren/sommer">Sommer Vektor erstellt von freepik</a>; Bildquelle rechts: Stuhlanleitung von IKEA</p>
+</div>
+</section>
+<section id="swift-playgrounds-app" class="slide level2">
+<h2>Swift Playgrounds App</h2>
+<h3 id="tipp-zum-algorithmen-lernen">Tipp zum Algorithmen lernen</h3>
+
+<img data-src="images/r_intro/r_intro_algorithm_swift.png" class="r-stretch quarto-figure-center"><div class="source-center">
+<p>Weblink: <a href="https://www.apple.com/de/swift/playgrounds/">https://www.apple.com/de/swift/playgrounds/</a></p>
+</div>
+</section></section>
+<section>
+<section id="programmiersprachen-für-data-science" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Programmiersprachen für Data Science</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="welche-programmiersprachen-werden-in-data-science-genutzt-viele" class="slide level2">
+<h2>Welche Programmiersprachen werden in Data Science genutzt? | Viele</h2>
+
+<img data-src="images/r_intro/r_intro_lang_wordcloud.png" class="r-stretch quarto-figure-center"></section>
+<section id="wer-benutzt-welche-programmiersprache-ranking" class="slide level2">
+<h2>Wer benutzt welche Programmiersprache? | Ranking</h2>
+
+<img data-src="images/r_intro/r_intro_lang_barchart.png" class="r-stretch quarto-figure-center"><p class="caption">Säulendiagramm der häufigsten Programme und Sprachen bei akademischen ‘data scientists’ (links) and Statistikern (rechts).</p><div class="source-left">
+<p>Datenquelle: <a href="https://www.kaggle.com/amberthomas/kaggle-2017-survey-results">Kaggle Survey, 2017</a></p>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>https://www.jetbrains.com/de-de/lp/devecosystem-2021/r/</p>
+<p>https://www.jetbrains.com/de-de/lp/devecosystem-2021/python/</p>
+</section></section>
+<section>
+<section id="einführung-in-r-und-entwicklungsumgebungen" class="title-slide slide level1 center" data-background-color="black" data-background-image="images/logos/logo_r.png" data-background-size="100px" data-background-repeat="repeat" data-background-transition="zoom" data-transition-speed="slow">
+<h1>Einführung in R und Entwicklungsumgebungen</h1>
+
+</section>
+<section id="was-ist-r" class="slide level2">
+<h2>Was ist R?</h2>
+<p><img data-src="images/logos/logo_r.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<blockquote>
+<p>“R is a <strong>system for statistical computation and graphics</strong>. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories by John Chambers and colleagues. R can be considered as a different implementation of S…..R is available as <strong>Free Software</strong> under the terms of the Free Software Foundation’s GNU General Public License in source code form. It compiles and runs on a wide variety of <strong>UNIX</strong> platforms, <strong>Windows</strong> and <strong>MacOS</strong>.” | aus: http://r-project.org/</p>
+</blockquote>
+</section>
+<section id="section-1" class="slide level2" data-background-iframe="http://www.youtube.com/embed/y-HOQnMsylA?feature=player_detailpage" data-background-interactive="true" data-background-transition="zoom" data-transition-speed="slow">
+<h2></h2>
+<div class="source-center">
+<p>Youtube link: <a href="https://www.youtube.com/watch?v=y-HOQnMsylA&amp;feature=emb_logo">https://www.youtube.com/watch?v=y-HOQnMsylA&amp;feature=emb_logo</a></p>
+</div>
+</section>
+<section id="das-baukasten-prinzip" class="slide level2">
+<h2>Das Baukasten-Prinzip</h2>
+
+<img data-src="images/r_intro/r_intro_flowchart.png" class="r-stretch quarto-figure-center"></section>
+<section id="wo-gibt-es-r" class="slide level2">
+<h2>Wo gibt es R?</h2>
+<p>Direkt auf der Website https://cran.r-project.org</p>
+
+<img data-src="images/r_intro/r_intro_cran_download.png" class="r-stretch quarto-figure-center"></section>
+<section id="editoren-und-entwicklungsumgebungen" class="slide level2 smaller">
+<h2>Editoren und Entwicklungsumgebungen</h2>
+<ul>
+<li>R kommt nur mit einer sehr einfachen Nutzeroberfläche daher, die einen Einstieg in die Sprache nicht leicht macht.</li>
+<li>Es wird daher empfohlen, zur Ausführung von R geeignete Editoren oder integrierte Entwicklungsumgebung (IDE) zu verwenden:</li>
+</ul>
+<div class="columns">
+<div class="column col-6 small">
+<ol type="1">
+<li><a href="https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/">RCommander</a> → eine der ersten IDEs</li>
+<li><a href="https://rstudio.com/">RStudio</a> → <strong>die</strong> IDE für R schlechthin</li>
+<li><a href="https://jupyter.org/">Jupyter Notebook</a></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> → Quelltext-Editor für eine Vielzahl von Programmier- und Auszeichnungssprachen; beliebt bei Web-Entwicklern, jetzt auch mit R-Plugin</li>
+<li><a href="https://www.jetbrains.com/help/pycharm/r-plugin-support.html">PyCharm</a> → ursprünglich für Python, jetzt auch mit R-Plugin</li>
+</ol>
+</div><div class="column col-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_r_gui.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-bei-r-usern" class="slide level2">
+<h2>Standard bei R Usern:</h2>
+<p><img data-src="images/logos/logo_rstudio.png" class="absolute" style="top: 15px; right: 250px; height: 75px; "></p>
+<div class="columns">
+<div class="column col-12 small">
+<ul>
+<li>Eine Software mit einer <strong>Entwicklungsumgebung</strong> für R.</li>
+<li>Hilft R Code zu schreiben und auszuführen und Daten zu analysieren.</li>
+<li>Integriert einen <strong>Texteditor</strong> mit einem <strong>Daten- und Paketmanager</strong></li>
+<li>Bietet <strong>Versionskontrollen</strong>, <strong>LaTeX Integration</strong>, Tastenkombinationen, und sog. <strong>‘debugging’ tools</strong> zur Fehlerdiagnose.</li>
+<li>Code in C, C++ oder Fortran kann kompiliert und direkt eingebunden werden.</li>
+<li>Markdown-basierte Dokumente werden mit Hilfe von knitr oder Sweave in <strong>Berichte, Webseiten oder Präsentationen</strong> umgewandelt → hier können R, Python, SQL, Stan, Julia, C und Fortran kombiniert werden.</li>
+<li>Es gibt die Software als frei verfügbare und als kommerzielle Version auf <a href="https://rstudio.com/">rstudio.com</a> (RStudio, Inc.) für Windows, Mac und Linux.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="unseren-rstudio-serverworkbench-über-den-webbrowser-nutzen" class="slide level2">
+<h2>Unseren RStudio Server/Workbench über den Webbrowser nutzen</h2>
+
+<img data-src="images/r_intro/r_intro_server_webaddress.png" class="r-stretch quarto-figure-center"><div class="footer">
+<p>Webadresse: <a href="http://134.100.87.141:8787/auth-sign-in?appUri=%2F">http://134.100.87.141:8787</a></p>
+</div>
+</section>
+<section id="gute-alternative-jupyter-notebooks" class="slide level2 smaller">
+<h2>Gute Alternative: Jupyter Notebooks</h2>
+<p><img data-src="images/logos/logo_jupyter.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<ul>
+<li>Zum Arbeiten mit Notebooks bietet sich auch Jupyter Notebooks und die neue Benutzeroberfläche <em>JupyterLab</em> an: <a href="https://jupyter.org/" data-preview-link="true">https://jupyter.org/</a></li>
+<li>Die MIN Fakultät der Uni Hamburg bietet die Servervariante <em>JupyterHub</em> an:
+<ul>
+<li><a href="https://code.min.uni-hamburg.de/hub/login?next=%2Fhub%2F">https://code.min.uni-hamburg.de/hub</a></li>
+<li>Hier kann man sich ganz einfach mit der BXX1234-Kennung einloggen.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_jupyter_hub_min.png"></p>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="die-rstudio-umgebung" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Die RStudio Umgebung</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="wie-ist-rstudio-aufgebaut" class="slide level2">
+<h2>Wie ist RStudio aufgebaut?</h2>
+
+<img data-src="images/r_intro/r_intro_rstudio_environment.png" class="r-stretch quarto-figure-center"></section>
+<section id="die-4-fenster" class="slide level2 smaller">
+<h2>Die 4 Fenster</h2>
+<div class="columns">
+<div class="column box-6 box-red small fragment">
+<!-- -->
+<h3 id="skripte">Skripte</h3>
+<ul>
+<li>Für <strong>ganze Datenanalysen</strong> sollten IMMER Skripte verwendet werden.</li>
+<li>Skripte sind simple <strong>Textdateien</strong>, die Deinen R Quellcode enthalten.</li>
+<li>Neben ausführbarem Code kann man auch <strong>Kommentare</strong> als nicht ausführbaren Code schreiben (um den Code zu erklären). Diese werden in R mit einem ‘<strong>#</strong>’ vorweg angegeben.</li>
+</ul>
+</div><div class="column box-6 box-green small stretch fragment">
+<!-- -->
+<h3 id="r-konsole">R Konsole</h3>
+<ul>
+<li>Das Kernstück von R</li>
+<li>Hier werden Befehle <strong>eingegeben</strong> und Ergebnisse <strong>ausgegeben</strong>.</li>
+<li>Für <strong>schnelle Berechnungen</strong> kann gerne nur die Konsole genutzt werden (ohne Skripte).</li>
+</ul>
+</div><div class="column box-6 box-yellow small stretch fragment">
+<!-- -->
+<h3 id="arbeitsumgebung">Arbeitsumgebung</h3>
+<ul>
+<li>Die Arbeitsumgebung zeigt die <strong>eigenen gespeicherten Funktionen und Objekte</strong> an.</li>
+<li>Sie ist bei jeder neuen Session <strong>anfangs leer</strong>.</li>
+</ul>
+</div><div class="column box-6 box-blue small fragment">
+<!-- -->
+<h3 id="datenmanager">Datenmanager</h3>
+<ul>
+<li>Anstelle Dateien im Windows Explorer zu suchen und öffnen, kann direkt der Datenmanager genutzt werden.</li>
+<li>Am besten ist, wenn das Verzeichnis, welches im Datenmanager zu sehen ist, auch das <strong>Arbeitsverzeichnis</strong> von R.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="anpassen-der-fenster" class="slide level2">
+<h2>Anpassen der Fenster</h2>
+<p>Über <em>Preferences &gt; Pane Layout</em>:</p>
+
+<img data-src="images/r_intro/r_intro_rstudio_pane_layout.png" class="r-stretch quarto-figure-center"></section>
+<section id="skripte-struktur-und-vorteile" class="slide level2">
+<h2>Skripte | Struktur und Vorteile</h2>
+<div class="columns">
+<div class="column col-6 fragment">
+<!-- -->
+<h3 id="struktur">Struktur</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Dies ist ein Kommentar</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># ----------------------</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Laden von Paketen</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># Import von Daten</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"MeineDatei.csv"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9"></a></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># Überprüfung des Imports</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="fu">str</span>(dat)</span>
+<span id="cb14-12"><a href="#cb14-12"></a></span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="co"># Analyse</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="co"># ...</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column col-6 fragment">
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Vorteile</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Transparenz und Reproduzierbarkeit</strong> - Nicht nur die Resultate sind einsehbar, sondern jeder einzelne Schritt der Analyse.</li>
+<li><strong>Flexibilität</strong> - Einige Analysen brauchen nur ein paar kleine Veränderungen bestehender R Skripte.</li>
+<li><strong>Austausch</strong> - Theoretisch sollte jeder R user Dein Skript verstehen, so dass Code leichter austauschbar ist.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mit-skripten-in-rstudio-arbeiten" class="slide level2 smaller">
+<h2>Mit Skripten in RStudio arbeiten</h2>
+<div class="columns">
+<div class="column box-12 box-red">
+<ul>
+<li>Öffnen eines neues Skripts: <em>File ➔ New File ➔ R Script</em></li>
+<li>SOFORTIGES Speichern des Skripts: <em>File ➔ Save As</em></li>
+<li>In das leere Skript Code schreiben, z.B. <code>2+2</code></li>
+<li>Senden des Codes an die R Konsole:
+<ol type="1">
+<li>Codeschnipsel kopieren und in die Konsole einfügen (NICHT zu empfehlen!)</li>
+<li><kbd>ctrl</kbd>+<kbd>enter</kbd> drücken➔ Ausführung des Codes der entsprechenden Zeile (wo der Cursor gerade ist); anschl. springt der Cursor eine Zeile weiter.</li>
+<li>Markieren des Codeabschnitts (können mehrere Zeilen sein), der ausgeführt werden soll, und <kbd>ctrl</kbd>+<kbd>enter</kbd> drücken bzw. Auswahl des <strong>Run</strong> buttons: <img data-src="images/r_intro/r_intro_run_scripts.png" data-fig-align="center"></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="das-arbeitsverzeichnis" class="slide level2">
+<h2>Das Arbeitsverzeichnis</h2>
+<ul>
+<li>Das Arbeitsverzeichnis ist ein Dateipfad auf Deinem Computer.</li>
+<li>Dieser Pfad legt den standardmäßigen Speicherort aller Dateien fest, die Du in R einlesen oder aus R heraus speichern möchtest.</li>
+<li>Gewöhne Dir an, <strong>jedes Mal bevor Du loslegst</strong> das Arbeitsverzeichnis festzulegen!
+<ul>
+<li>Dafür gibt es mehrere Wege, merke Dir aber erstmal nur diesen hier:</li>
+</ul></li>
+</ul>
+
+<img data-src="images/r_intro/r_intro_working_directory.png" class="r-stretch quarto-figure-center"></section>
+<section id="empfehlung-r-projekte" class="slide level2">
+<h2>Empfehlung: R Projekte</h2>
+
+<img data-src="images/r_intro/r_intro_rstudio_projects.png" class="r-stretch quarto-figure-center"></section>
+<section id="r-projekte" class="slide level2">
+<h2>R Projekte</h2>
+<div class="columns">
+<div class="column col-6">
+<h3 id="neue-ordnerstruktur">Neue Ordnerstruktur</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_rstudio_projects2.png"></p>
+</figure>
+</div>
+</div><div class="column col-6">
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Vorteile von Projekten</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Vordefinierte</strong> Ordnerstruktur..</li>
+<li>Das Arbeitsverzeichnis wird <strong>automatisch</strong> gesetzt</li>
+<li>Alle <strong>Skripte</strong> in diesem Projekt sind <strong>sofort</strong> verfügbar.</li>
+<li>Öffnet eine <strong>neue R Instanz</strong> so dass man zwischen verschiedenen Instanzen wechseln kann.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="rechnen-in-r" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Rechnen in R</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="r-als-simpler-taschenrechner" class="slide level2">
+<h2>R als simpler Taschenrechner</h2>
+<p>In seiner einfachsten Form ist R vergleichbar mit einem <strong>einfachen Taschenrechner</strong>.</p>
+
+<img data-src="images/r_intro/r_intro_calculator_1.png" class="r-stretch quarto-figure-center"></section>
+<section id="einfache-berechnungen" class="slide level2">
+<h2>Einfache Berechnungen</h2>
+<p>Folgende <strong>arithmetische Operatoren</strong> gibt es:</p>
+<div class="columns">
+<div class="column col-6 fragment">
+<ul>
+<li>Addition: <code>+</code></li>
+<li>Subtraktion: <code>-</code></li>
+<li>Multiplikation: <code>*</code></li>
+<li>Division: <code>/</code></li>
+<li>Potenzierung: <code>^</code></li>
+</ul>
+</div><div class="column col-6 fragment">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Beispiel</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span>  </span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="dv">5</span> <span class="sc">-</span> <span class="dv">5</span>  </span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">2</span> <span class="co"># multipl. dann add.</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>(<span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="co"># add. dann div.</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="column col-12 fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="rechnen-mit-funktionen" class="slide level2">
+<h2>Rechnen mit Funktionen</h2>
+<p><img data-src="images/r_intro/r_intro_calculator_2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 450px; "></p>
+<div class="columns">
+<div class="column col-9">
+<p>R hat aber auch <strong>Funktionen</strong> mit denen man <strong>anspruchsvollere</strong> Manipulationen durchführen kann, die durch <strong>Klammern</strong> <strong>kombinierbar</strong> sind:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>(<span class="dv">12</span> <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">9</span>))<span class="sc">/</span>(<span class="fu">exp</span>(<span class="dv">2</span>)<span class="sc">+</span><span class="dv">1</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column col-12 small fragment">
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tipp</strong></p>
+</div>
+<div class="callout-content">
+<p>Reihenfolge der Berechnung: von der innersten zur äußersten Klammer - wie bei einem Taschenrechner:</p>
+<ol type="1">
+<li>Funktionen <code>sqrt(9)</code> und <code>exp(2)</code> (sqrt = square root, exp = exponent) ausführen,</li>
+<li>dann <code>12</code> zum Ergebnis von <code>sqrt(9)</code> und <code>1</code> zum Ergebnis von <code>exp(2)</code> addieren,</li>
+<li>dann teilen.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="prompt" class="slide level2 smaller">
+<h2>+ prompt</h2>
+
+<img data-src="images/r_intro/r_intro_prompt.png" class="r-stretch quarto-figure-center"><p>Wenn das sog. prompt Zeichen von <strong>“&gt;”</strong> zu <strong>“+”</strong> wechselt, ist das ein Zeichen, dass der Befehl noch nicht zu Ende ist. Meist fehlen eine oder mehrere schließende Klammern. Führe entweder den Befehl zu Ende oder drücke (2mal) auf <kbd>esc</kbd>.</p>
+</section></section>
+<section>
+<section id="built-in-funktionen-und-pakete" class="title-slide slide level1 center" data-background="#2F4048">
+<h1>Built-in Funktionen und Pakete</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="eine-kurze-einführung" class="slide level2 smaller">
+<h2>Eine kurze Einführung</h2>
+<ul>
+<li>Einige Funktionen sind in den <strong>Basispaketen</strong> von R enthalten, andere sind erst durch die Installation und das Laden bestimmter Zusatzpakete verfügbar.</li>
+<li>R Funktionen arbeiten ähnlich wie Funktionen in anderen Programmen:</li>
+</ul>
+
+<img data-src="images/r_intro/r_intro_functions.png" class="r-stretch quarto-figure-center"></section>
+<section id="dokumentation-hilfe-aufrufen" class="slide level2">
+<h2>Dokumentation (Hilfe) aufrufen</h2>
+<p>Jede Funktion hat seine eigene Hilfe die mit <code>help()</code> oder <code>?</code> aufgerufen werden kann:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">help</span>(<span class="st">"mean"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>?mean</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Zum Durchsuchen der Hilfsseiten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>??mean</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">help.search</span>(<span class="st">"mean"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Listet <strong>alle</strong> Funktionen, welche das Wort “mean” enthalten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">apropos</span>(<span class="st">"mean"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-dokumentation-für-mean-1" class="slide level2">
+<h2>R Dokumentation für <code>mean()</code> | 1</h2>
+
+<img data-src="images/r_intro/r_intro_mean_help1.png" class="r-stretch quarto-figure-center"></section>
+<section id="r-dokumentation-für-mean-2" class="slide level2">
+<h2>R Dokumentation für <code>mean()</code> | 2</h2>
+
+<img data-src="images/r_intro/r_intro_mean_help2.png" class="r-stretch quarto-figure-center"></section>
+<section id="pakete-für-mehr-funktionalität" class="slide level2">
+<h2>Pakete für mehr Funktionalität</h2>
+<div class="cell">
+
+</div>
+<ul>
+<li>Pakete werden von der <strong>R Gemeinschaft</strong> geschrieben.</li>
+<li>Sind sind eine Sammlung von
+<ul>
+<li>R <strong>Funktionen</strong>,</li>
+<li>der <strong>Dokumentation</strong>, die beschreibt wie die Funktionen anzuwenden sind,</li>
+<li>und oft auch <strong>Beispieldaten</strong>.</li>
+</ul></li>
+<li>Die offizielle <a href="https://cran.r-project.org/web/packages/index.html">CRAN package Webseite</a> enthält aktuell <strong>18786 (!)</strong> Pakete (Stand 2022-10-31).</li>
+</ul>
+</section>
+<section id="entwicklung-veröffentlichter-pakete" class="slide level2">
+<h2>Entwicklung veröffentlichter Pakete</h2>
+
+<img data-src="04-intro-programming-and-r_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch quarto-figure-center"><div class="source-right">
+<p>Dieses Diagramm basiert auf einer Modifikation des Codes von <a href="https://blog.revolutionanalytics.com/2016/04/cran-package-growth.html">Andrie de Vries Blog Post</a>.</p>
+</div>
+</section>
+<section id="installation-eines-pakets-einmalig-1" class="slide level2">
+<h2>Installation eines Pakets (EINMALIG) | 1</h2>
+<h3 id="mittels-funktion">Mittels Funktion</h3>
+<p>Die von CRAN offiziell anerkannten Versionen können direkt über die Funktion <code>install.packages()</code> installiert werden:</p>
+<p><br></p>
+<div class="columns">
+<div class="column col-12 x-large">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">install.packages</span>(<span class="st">"swirl"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>→ <span style="font-size:30px"><em>swirl</em> ist ein Paket, welches auch für die Übungsaufgaben benötigt wird.</span></p>
+</div>
+</div>
+</section>
+<section id="installation-eines-pakets-einmalig-2" class="slide level2">
+<h2>Installation eines Pakets (EINMALIG) | 2</h2>
+<h3 id="aus-rstudio-heraus">Aus RStudio heraus</h3>
+
+<img data-src="images/r_intro/r_intro_install_packages.png" class="r-stretch quarto-figure-center"></section>
+<section id="laden-eines-pakets-jede-sitzung" class="slide level2 smaller">
+<h2>Laden eines Pakets (JEDE Sitzung)</h2>
+<p>Ein Paket muss für jede Sitzung geladen werden, um auf die Funktionen zugreifen zu können. Dazu gibt es die Funktion <code>library()</code>. R überprüft dann erstmal, ob dieses Paket auch installiert ist.</p>
+<div class="columns">
+<div class="column col-12 x-large">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">library</span>(swirl) </span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">library</span>(<span class="st">"swirl"</span>) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column col-12">
+<p>→ Bei dieser Funktion darf der Paketname <strong>mit oder ohne</strong> Anführungszeichen angegeben werden!</p>
+</div>
+</div>
+</section>
+<section id="wie-kann-man-pakete-aus-der-sitzung-deaktivieren" class="slide level2 smaller">
+<h2>Wie kann man Pakete aus der Sitzung deaktivieren?</h2>
+<p>Pakete werden einfach mit <code>detach()</code> deaktiviert …</p>
+<div class="columns">
+<div class="column col-12 x-large">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">detach</span>(packagename)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>.. oder indem das Häkchen neben dem Paketnamen im ‘Packages’ Reiter entfernt wird:</p>
+<div class="columns">
+<div class="column box-12 box-grey1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r_intro/r_intro_detach_packages.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="übungsaufgabe" class="title-slide slide level1 center" data-background="#191919">
+<h1>Übungsaufgabe</h1>
+<p><img data-src="images/ds_comps/ds_comp2.png" class="absolute" style="top: 0px; right: 0px; width: auto; height: 200px; "></p>
+</section>
+<section id="aufgabe-1" class="slide level2">
+<h2>Aufgabe 1</h2>
+<div class="columns">
+<div class="column col-12 small">
+<ul>
+<li>Loggen Sie sich bei der RStudio Workbench ein und machen Sie sich mit der GUI vertraut.</li>
+<li>Starten Sie ein neues Projekt, welches Sie <em>“DataScience1”</em> nennen.</li>
+<li>Starten Sie ein neues Skript und speichern Sie es sofort unter <em>“Skript1”</em> ab.</li>
+<li>Nutzen Sie dieses Skript für alle folgenden R Code Befehle!</li>
+<li>Wenn Sie möchten, können Sie natürlich auch zusätzlich R und RStudio lokal auf Ihrem Rechner installieren - wir werden in den Übungen aber mit der Server-Version arbeiten!
+<ul>
+<li>R: <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></li>
+<li>RStudio Desktop-Open Source Edition: <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="quiz" class="slide level2 smaller">
+<h2>Quiz</h2>
+<h3 id="einfache-berechnungen-1">Einfache Berechnungen</h3>
+<p>Führen Sie in R oder RStudio folgende Berechnungen durch und vergleichen Sie Ihre Ergebnisse mit den Lösungen:</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Quizze</a></li><li><a href="#tabset-1-2">Lösungen</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ol type="1">
+<li>Subtrahieren Sie 10 von 23 und multiplizieren Sie das Ergebnis mit 2.</li>
+<li>Subtrahieren Sie 10 von 23, multiplizieren Sie das Ergebnis mit 2, addieren Sie dann 100 dazu und Sie das Ergebnis durch 5.</li>
+<li>Subtrahiere Sie 23 von 10, multiplizieren Sie das Ergebnis mit -10 und nehmen Sie dann davon die Quadratwurzel (verwenden Sie die Funktion <code>sqrt()</code>).</li>
+</ol>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Quiz 1</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>(<span class="dv">23-10</span>)<span class="sc">*</span><span class="dv">2</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Quiz 2</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>((<span class="dv">23-10</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">100</span>)<span class="sc">/</span><span class="dv">5</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Quiz 3</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">sqrt</span>((<span class="dv">10-23</span>)<span class="sc">*-</span><span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.40175</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="swirl-kurse-in-data-science-1" class="slide level2">
+<h2>Swirl-Kurse in <em>Data Science 1</em></h2>
+<p><img data-src="images/icons/computer.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<div class="columns">
+<div class="column col-6 small">
+<ul>
+<li>Begleitend zu diesem Modul gibt es 5 Kurse mit bis zu 20 Lektionen (im Englischen ‘lessons’), die alle jeweils 5-20min in Anspruch nehmen.</li>
+<li>Mit <em>swirl</em> können Sie interaktiv direkt in R bzw. RStudio lernen.</li>
+<li>Eine Unterbrechung ist jederzeit möglich, so dass alle Kurslektionen nach und nach bearbeitet werden können.</li>
+</ul>
+</div><div class="column col-5 offset-1 small fragment">
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Kursübersicht</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>DS1-01-R Grundlagen<br>
+</li>
+<li>DS1-02-Datenexploration mit R (mit Basisfunktionen)</li>
+<li>DS1-03-Datenaufbereitung oder per Anleitung durchs Tidyversum</li>
+<li>DS1-04-Datenvisualisierung mit ggplot2</li>
+<li>DS1-05-Handling spezieller Datentypen</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="kursinstallation" class="slide level2 smaller">
+<h2>Kursinstallation</h2>
+<p><img data-src="images/icons/computer.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<ul>
+<li>Grundlage der Kurse ist die Installation des R Pakets ‘<em>swirl</em>’ und der 5 Kursdateien (‘.swc’ Dateien)</li>
+<li>Auf dem RStudio Server/Workbench ist alles bereits installiert und Sie können gleich loslegen…</li>
+<li>Wenn Sie auch lokal auf Ihrem Rechner arbeiten wollen, geben Sie folgende Befehle (einmalig) in die Konsole:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">install.packages</span>(<span class="st">"swirl"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"saskiaotto/DSBswirl"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4"></a>DSBswirl<span class="sc">::</span><span class="fu">install_dsb_courses</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Erklärung zum Code</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Der erste Befehl installiert das <em>swirl</em> Paket.</li>
+<li>Der zweite Befehl installiert das <em>remotes</em> Paket, welches nötig ist, um Pakete von GitHub zu installieren.</li>
+<li>Der dritte Befehl installiert unser <em>DSBswirl</em> Paket, welches die fünf swirl Kurse enthält.</li>
+<li>Der letzte Befehl installiert alle diese Kurse auf Ihrem Rechner.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="starten-von-swirl-kursen" class="slide level2 smaller">
+<h2>Starten von Swirl-Kursen</h2>
+<p><img data-src="images/icons/computer.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<ul>
+<li>Laden Sie das ‘<em>swirl</em>’ Paket und starten Sie das swirl-Kursprogramm mit der <code>swirl()</code> Funktion (bei jeder session):</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">library</span>(swirl)</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">swirl</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Sie werden bei jeder neuen Session nach einem Namen gefragt:
+<ul>
+<li>Um auf den Zwischenstand der letzten Lektionen zugreifen zu können, sollten Sie immer den gleichen Name verwenden!</li>
+<li><strong>Verwenden Sie bei RStudio Workbench Ihren Usernamen als swirl Nutzernamen!!!</strong></li>
+</ul></li>
+<li>Wählen Sie anschl. den ersten Kurs aus (geben Sie die entsprechende Indexnummer in die Konsole).</li>
+<li>Wählen Sie nun eine Lektion in der Lektionsübersicht des Kurses.</li>
+</ul>
+</section>
+<section id="zu-bearbeitende-swirl-lektionen" class="slide level2">
+<h2>Zu bearbeitende Swirl-Lektionen</h2>
+<p><img data-src="images/icons/computer.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<h3 id="kurs-ds1-01-r-grundlagen">Kurs <em>DS1-01-R Grundlagen</em></h3>
+<ul>
+<li>L01-Kurseinfuehrung</li>
+<li>L02-R als Taschenrechner</li>
+<li>L03-Arbeitsbereich aufraeumen</li>
+<li>L04-Arbeitsverzeichnis einstellen</li>
+<li>L05-Verwendung der R Hilfe</li>
+<li>L06-Variablenzuweisungen und Grundfunktionen</li>
+<li>L07-Datentypen und Operatoren</li>
+</ul>
+</section>
+<section id="lernziele" class="slide level2 smaller">
+<h2>Lernziele</h2>
+<p><img data-src="images/icons/checklist2.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<h3 id="am-ende-dieser-übungseinheit-sollten-sie">Am Ende dieser Übungseinheit sollten Sie …</h3>
+<ul>
+<li>..die GUI von RStudio weiter kennengelernt haben,</li>
+<li>..vertraut sein mit der Programmsteuerung innerhalb von <em>swirl</em>,</li>
+<li>..einfache Berechnungen mit arithmetischen Operatoren und built-in Funktionen durchführen können,</li>
+<li>..wissen, wie man einzelne Werte als Skalare speichert und mit ihnen rechnet,</li>
+<li>..die elementarsten Datentypen in R kennen und überprüfen können,</li>
+<li>..einfache Abfragen mit Vergleichs- und Verknüpfungsoperatoren machen können.</li>
+</ul>
+</section></section>
+<section>
+<section id="wie-fühlen-sie-sich-jetzt" class="title-slide slide level1 center" data-background="#B40014">
+<h1>Wie fühlen Sie sich jetzt…?</h1>
+
+</section>
+<section id="total-konfus" class="slide level2">
+<h2>Total konfus?</h2>
+<p><img data-src="images/comics/comic_confused_black.png" class="absolute" style="top: 50px; right: 30px; width: auto; height: 400px; "> <br></p>
+<div class="columns">
+<div class="column box-6 box-red">
+<h3 id="keine-sorge">Keine Sorge…</h3>
+<p>… im swirl-Kurs werden Sie direkt an die Hand genommen und Stück für Stück angeleitet.</p>
+</div>
+</div>
+</section>
+<section id="total-gelangweilt" class="slide level2">
+<h2>Total gelangweilt?</h2>
+
+<img data-src="images/comics/comic_bored.png" width="800" class="r-stretch quarto-figure-center"><div class="r-fit-text">
+<p>Dann testen Sie doch Ihr Wissen in folgendem Abschlussquiz…</p>
+</div>
+</section>
+<section id="abschlussquiz" class="slide level2" data-background="radial-gradient(yellow, green)">
+<h2>Abschlussquiz</h2>
+<p><img data-src="images/icons/action.png" class="absolute" style="top: 10px; right: 0px; height: 75px; "></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-de73f5e16389ef032a20" style="width:100%;height:500px;" class="multiQuestions html-widget"></div>
+<script type="application/json" data-for="htmlwidget-de73f5e16389ef032a20">{"x":{"questions":"[ { \"id\":1, \"question\":\"Welches könnte ein weiteres Grundelement bei den Programmiersprachen C++, Java, JavaScript, Python und R sein (denk an die Klasse, die sie alle vereint)?\", \"options\": [{\"a\":\"Operatoren\",\"b\":\"Datenytpen\",\"c\":\"Anweisungen\",\"d\":\"Objekte\" }], \"answer\":\"Objekte\", \"score\":0, \"status\":\"\" }, { \"id\":2, \"question\":\"Wie bezeichnet man die Gesamtheit aller Anweisungen, die in einer bestimmten Programmiersprache geschrieben sind?\", \"options\": [{\"a\":\"Codequelle\",\"b\":\"Quellcode\",\"c\":\"Syntax\",\"d\":\"Es gibt keinen Namen dafür.\" }], \"answer\":\"Quellcode\", \"score\":0, \"status\":\"\" }, { \"id\":3, \"question\":\"Was ist ein Programm?\", \"options\": [{\"a\":\"Die Umsetzung eines Algorithmus und der zugehörigen Datenbereiche in eine Programmiersprache.\",\"b\":\"Die Umsetzung einer Programmiersprache und der zugehörigen Datenbereiche in einen Algorithmus.\",\"c\":\"Die Umsetzung eines Datenbereiche in einen Algorithmus und der zugehörigen Programmiersprache.\" }], \"answer\":\"Die Umsetzung eines Algorithmus und der zugehörigen Datenbereiche in eine Programmiersprache.\", \"score\":0, \"status\":\"\" }, { \"id\":4, \"question\":\"Was lässt sich mit einer Programmiersprache formulieren?\", \"options\": [{\"a\":\"Eine Datei\",\"b\":\"Daten\",\"c\":\"Eine Rechenvorschrift\" }], \"answer\":\"Eine Rechenvorschrift\", \"score\":0, \"status\":\"\" }, { \"id\":5, \"question\":\"Welches der folgenden Antworten ist KEINE Klasse einer Programmiersprache?\", \"options\": [{\"a\":\"Funktionale Programmierung\",\"b\":\"Datenorientierte Programmierung\",\"c\":\"Objektorientierte Programmierung\",\"d\":\"Imperative Programmierung\" }], \"answer\":\"Datenorientierte Programmierung\", \"score\":0, \"status\":\"\" }, { \"id\":6, \"question\":\"Bei welchen der 3 Übersetzungstypen wird der Quellcode während der Laufzeit des Programms übersetzt?\", \"options\": [{\"a\":\"Compiler\",\"b\":\"Interpreter\",\"c\":\"JIT-Compiler \" }], \"answer\":\"Interpreter\", \"score\":0, \"status\":\"\" }, { \"id\":7, \"question\":\"Was ist KEIN Algorithmus?\", \"options\": [{\"a\":\"Reihe von Anweisungen um eine Aufgabe oder ein Problem zu lösen.\",\"b\":\"Rezept\",\"c\":\"Bedienungsanleitung eines Fernseher\",\"d\":\"Notfall- und Alarmplan\",\"e\":\"Zeitungsartikel\" }], \"answer\":\"Zeitungsartikel\", \"score\":0, \"status\":\"\" }, { \"id\":8, \"question\":\"Welches der 4 Grundelemente einer Programmiersprache stellt Code dar, der solange ausgeführt wird, wie die Bedingung wahr ist?\", \"options\": [{\"a\":\"Variable\",\"b\":\"Bedingung\",\"c\":\"Schleife\",\"d\":\"Funktion\" }], \"answer\":\"Schleife\", \"score\":0, \"status\":\"\" }, { \"id\":9, \"question\":\"Bei welchem der 4 Grundelemente einer Programmiersprache wird Code ausgeführt, wenn eine Abfrage zutrifft?\", \"options\": [{\"a\":\"Variable\",\"b\":\"Bedingung\",\"c\":\"Schleife\",\"d\":\"Funktion\" }], \"answer\":\"Bedingung\", \"score\":0, \"status\":\"\" }, { \"id\":10, \"question\":\"Welches der 4 Grundelemente einer Programmiersprache stellt Code dar, der jederzeit über den jeweiligen Namen aufgerufen werden kann?\", \"options\": [{\"a\":\"Variable\",\"b\":\"Bedingung\",\"c\":\"Schleife\",\"d\":\"Funktion\" }], \"answer\":\"Funktion\", \"score\":0, \"status\":\"\" }, { \"id\":11, \"question\":\"Welches der 4 Grundelemente einer Programmiersprache stellt eine Möglichkeit dar, im Programm einen Wert (Zahl, Zeichen,..) zu speichern?\", \"options\": [{\"a\":\"Variable\",\"b\":\"Bedingung\",\"c\":\"Schleife\",\"d\":\"Funktion\" }], \"answer\":\"Variable\", \"score\":0, \"status\":\"\" } ]","title":"Quiz","width":"100%","height":"500px","center":"true","scroll":"true","inclTimer":"false","fontFamily":"'Helvetica Neue', Helvetica, Arial, sans-serif","fontSize":16,"titleFontSize":18,"questionFontSize":18,"titleCol":"#FFF","titleBg":"#5F5F5F","mainCol":"#1C1C1C","mainBg":"#FBFBFB","answersCol":"#1C1C1C","answersBg":"#F1F1F1","hoverBg":"#DDDDDD","timerCol":"#1C1C1C"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2" data-background="#2F4048">
+<h2></h2>
+<div id="end-slide">
+<img src="images/uhh_logo_white.png" style="width:200px; height:auto">
+<p>
+Bei weiteren Fragen: saskia.otto(at)uni-hamburg.de<br><br> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a><br> Diese Arbeit is lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution-ShareAlike 4.0 International License </a> mit Ausnahme der entliehenen und mit Quellenangabe versehenen Abbildungen.<br>
+</p>
+</div>
+<p><img src="images/uhh_logo_black.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Kurswebseite: <a href="https://saskiaotto.github.io/bio-bsc-data-science-1/">Data Science 1</a></p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="04-intro-programming-and-r_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': true,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Kopiert!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Kopiert!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+    
+    
+
+</body></html>
