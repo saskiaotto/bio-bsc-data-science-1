@@ -298,8 +298,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -307,16 +307,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -393,7 +386,7 @@ statistics</a></li>
 <li><a href="https://saskiaotto.github.io/bio-bsc-data-science-1/03-biological-processes.html#/title-slide">Biological
 processes explained through math</a></li>
 <li><a href="https://saskiaotto.github.io/bio-bsc-data-science-1/04-intro-programming-and-r.html#/title-slide">Introduction
-to programming and R - COMING SOON</a></li>
+to programming and R</a></li>
 <li><a href="https://saskiaotto.github.io/bio-bsc-data-science-1/05-r-basics-variables-vectors.html#/title-slide">Basics
 in R: variables and vectors - COMING SOON</a></li>
 <li><a href="https://saskiaotto.github.io/bio-bsc-data-science-1/06-r-basics-complex-objects.html#/title-slide">Basics
